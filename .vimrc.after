@@ -10,8 +10,8 @@ set nocompatible
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-"store lots of :cmdline history
-set history=1000
+"set :cmdline history
+set history=100
 
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
@@ -28,14 +28,6 @@ set hlsearch    "hilight searches by default
 
 set wrap        "dont wrap lines
 set linebreak   "wrap lines at convenient points
-
-if v:version >= 703
-    "undo settings
-    set undodir=~/.vim/undofiles
-    set undofile
-
-    set colorcolumn=+1 "mark the ideal max text width
-endif
 
 "default indent settings
 set shiftwidth=2
@@ -250,9 +242,6 @@ endfunction
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
-"snipmate settings
-let g:snips_author = "Martin Grenfell"
-
 "taglist settings
 let Tlist_Compact_Format = 1
 let Tlist_Enable_Fold_Column = 0
@@ -274,9 +263,6 @@ let g:NERDTreeShowHidden = 1
 nnoremap <f1> :BufExplorer<cr>
 nnoremap <f2> :NERDTreeToggle<cr>
 nnoremap <f3> :TlistToggle<cr>
-
-"source project specific config files
-runtime! projects/**/*.vim
 
 "dont load csapprox if we no gui support - silences an annoying warning
 if !has("gui")
