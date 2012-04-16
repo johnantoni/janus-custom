@@ -35,10 +35,17 @@ set nofoldenable        "dont fold by default
 "turn on syntax highlighting
 syntax on
 
-" vim-ruby setup
+"vim-ruby setup
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 compiler ruby         " Enable compiler support for ruby
+
+"indent guides
+let g:indent_guides_enable_on_vim_startup = 1 "enable on startup
+set ts=2 sw=2 et
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
