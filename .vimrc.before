@@ -13,4 +13,3 @@ nmap <silent> ,b :BuffergatorToggle<cr>
 " map ack search-in-file to leader+a
 nnoremap <leader>a :Ack 
 
-" start block selection (visual mode) leader+v
