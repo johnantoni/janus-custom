@@ -37,3 +37,5 @@ all in the .vimrc.before & .vimrc.after
 * use command+/ to comment out each successive line
 * use command+[ or command+] to indent a line or selection
 * use leader+n to toggle NERDTree
+
+once the buffergator navigator is open you can close a buffer by using the arrow keys to navigate to it and hitting 'x' to close it
