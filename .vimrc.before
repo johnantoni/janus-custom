@@ -1,15 +1,2 @@
 " map leader key to ','
-let mapleader = ","
-
-" map ctrl-p search to leader+p
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_map = '<leader>p'
-
-" suppress BufferGator default mapping
-let g:buffergator_suppress_keymaps = 1
-" so we can make it togger view on leader+b
-nmap <silent> ,b :BuffergatorToggle<cr>
-
-" map ack search-in-file to leader+a
-nnoremap <leader>a :Ack 
-
+let mapleader=","
