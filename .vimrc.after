@@ -30,7 +30,7 @@ set shiftwidth=2
 set softtabstop=2
 
 set autoindent
-set laststatus=2
+set laststatus=2 " Enables the status line at the bottom of Vim
 set showmatch
 set incsearch
 set hlsearch
@@ -41,7 +41,7 @@ set ignorecase smartcase
 " highlight current line
 set cursorline
 
-set cmdheight=2
+set cmdheight=1 " command line height 
 set switchbuf=useopen
 set numberwidth=5
 set showtabline=2
@@ -84,7 +84,7 @@ set wildmenu
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 
 "set status line
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+:set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 " ---------------------------------------------------------
 " plugin setting

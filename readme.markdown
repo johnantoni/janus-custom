@@ -39,3 +39,10 @@ all in the .vimrc.before & .vimrc.after
 * use leader+n to toggle NERDTree
 
 once the buffergator navigator is open you can close a buffer by using the arrow keys to navigate to it and hitting 'x' to close it
+
+## todo:
+
+* find out why ack doesn't work on loading macvim via osx or "open new
+  macvim buffer here" but works when loaded via mvim .
+
+
