@@ -5,18 +5,22 @@ customized janus config for vim & macvim
 ## to install:
 
 first install janus: 
+
     cd ~/.
     curl -Lo- http://bit.ly/janus-bootstrap | bash
 
 then pull this repo to create your own .janus config
+
     git clone git://github.com/johnantoni/janus-custom.git ~/.janus
 
 then symlink the .vimrc.before & .after files in .janus to the home dir by running
+
     ~/.janus/symlink
 
 ## upgrade submodules:
 
 It's simple to upgrade the sub-modules, simply run
+
     ~/.janus/upgrade
 
 ## included:
