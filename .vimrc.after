@@ -60,6 +60,9 @@ set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
+" Disable swapfile
+" set noswapfile
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
