@@ -54,6 +54,10 @@ all in the .vimrc.before & .vimrc.after
 
 once the buffergator navigator is open you can close a buffer by using the arrow keys to navigate to it and hitting 'x' to close it
 
+## ir_black osx theme
+
+To keep things consist thru the terminal, try @fyrabanks ir_black theme. Download it from here https://github.com/johnantoni/ir_black_terminal
+
 ## todo:
 
 * find out why ack doesn't work on loading macvim via osx or "open new
