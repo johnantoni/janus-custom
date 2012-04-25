@@ -12,7 +12,7 @@
   url = https://github.com/nathanaelkane/vim-indent-guides.git
 [submodule "vim-irblack"]
 	path = vim-irblack
-  url = https://johnantoni@github.com/johnantoni/vim-irblack.git
+	url = https://johnantoni@github.com/johnantoni/vim-irblack.git
 [submodule "grb256"]
 	path = grb256
-  url = https://johnantoni@github.com/johnantoni/grb256.git
+	url = https://johnantoni@github.com/johnantoni/grb256.git
