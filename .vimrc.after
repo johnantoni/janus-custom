@@ -9,7 +9,8 @@ compiler ruby " Enable compiler support for ruby
 " allow unsaved background buffers and remember marks/undo for them
 set hidden
 
-set number " show line numbers
+" show line numbers
+set number
 
 " remember more commands and search history
 set history=10000
@@ -18,9 +19,8 @@ set history=10000
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
-set expandtab
-
 " tab size
+set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -36,7 +36,7 @@ set ignorecase smartcase
 " highlight current line
 set cursorline
 
-set cmdheight=2 " command line height 
+set cmdheight=2 
 set switchbuf=useopen
 set numberwidth=5
 set showtabline=2
@@ -45,7 +45,8 @@ set shell=bash
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
+" (handled by default with JANUS)
+"set t_ti= t_te=
 
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
@@ -58,7 +59,8 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set showcmd " display incomplete commands
+" display incomplete commands
+set showcmd 
 
 " Enable highlighting for syntax
 syntax on
@@ -74,7 +76,6 @@ set wildmode=longest,list
 
 " make tab completion for files/buffers act like bash
 set wildmenu
-"set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 
 "set status line
 :set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c%03V%)
@@ -101,12 +102,6 @@ augroup vimrcEx
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-
-  " Indent p tags
-  autocmd FileType html,eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
-
-  " Do syntax highlight markdown, even though it might be wrong
-  autocmd! FileType mkd,markdown setlocal syn=on
 
   "spell check when writing commit logs
   autocmd filetype svn,*commit* setlocal spell
@@ -175,10 +170,4 @@ endif
 :set t_Co=256 " 256 colors
 :set background=dark
 :color grb256
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Convert buffer to HAML
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gem install haml hpricot
-":vmap <leader>h :!html2haml<cr>
 
