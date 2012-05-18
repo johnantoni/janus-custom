@@ -99,6 +99,7 @@ augroup vimrcEx
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
   autocmd! BufRead,BufNewFile *.lock setfiletype ruby 
+  autocmd! BufRead,BufNewFile *.pill setfiletype ruby 
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
