@@ -6,6 +6,11 @@ set nocompatible
 
 compiler ruby " Enable compiler support for ruby
 
+" wrap lines
+:set wrap
+:set linebreak
+:set nolist  " list disables linebreak
+
 " allow unsaved background buffers and remember marks/undo for them
 set hidden
 
@@ -171,4 +176,3 @@ endif
 :set t_Co=256 " 256 colors
 :set background=dark
 :color grb256
-
