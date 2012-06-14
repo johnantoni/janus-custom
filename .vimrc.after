@@ -224,6 +224,7 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 " ---------------------------------------------------------
 if has("gui_running")
   set guioptions=-t "turn off toolbar
+  set lines=65 columns=230
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -232,5 +233,4 @@ endif
 :set t_Co=256
 :set background=dark
 :color grb256
-":set guifont=Menlo\ Regular:h12
 :set guifont=Monaco:h12
