@@ -232,4 +232,5 @@ endif
 :set t_Co=256
 :set background=dark
 :color grb256
-:set guifont=Menlo\ Regular:h12
+":set guifont=Menlo\ Regular:h12
+:set guifont=Monaco:h12
