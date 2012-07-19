@@ -77,7 +77,7 @@ syntax on
 filetype plugin indent on
 
 " use emacs-style tab completion when selecting files, etc
-set wildmode=longest,list
+set wildmode=list:longest,full
 
 " make tab completion for files/buffers act like bash
 set wildmenu
@@ -99,6 +99,9 @@ augroup vimrcEx
   autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,haml,coffee set ai sw=2 sts=2 et
   autocmd FileType python set sw=4 sts=4 et
 
+  "don't remember file position for git commits
+  autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
   autocmd! BufRead,BufNewFile *.lock setfiletype ruby 
   autocmd! BufRead,BufNewFile *.pill setfiletype ruby 
@@ -118,22 +121,26 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>y "*y
+
+"map <leader>y "*y
+
 " Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+"nnoremap <c-j> <c-w>j
+"nnoremap <c-k> <c-w>k
+"nnoremap <c-h> <c-w>h
+"nnoremap <c-l> <c-w>l
+
 " Insert a hash rocket with <c-l>
-imap <c-l> <space>=><space>
-" Can't be bothered to understand ESC vs <c-c> in insert mode
-imap <c-c> <esc>
+imap <c-l> <space>=><space> 
+
 " Clear the search buffer when hitting return
-function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
-endfunction
-call MapCR()
-nnoremap <leader><leader> <c-^>
+"function! MapCR()
+  "nnoremap <cr> :nohlsearch<cr>
+"endfunction
+"call MapCR()
+"nnoremap <leader><leader> <c-^>
+
+map <leader>q :ccl<ENTER>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
@@ -217,7 +224,7 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 " InsertTime COMMAND
 " Insert the current time
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
+command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 
 " ---------------------------------------------------------
 " MACVIM SETTINGS
@@ -225,6 +232,7 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 if has("gui_running")
   set guioptions=-t "turn off toolbar
   set lines=65 columns=230
+  set mouse=a "get full mouse support
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -232,5 +240,15 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set t_Co=256
 :set background=dark
-:color grb256
-:set guifont=Monaco:h12
+:set guifont=Menlo:h14
+":color grb256
+:color jellybeans+
+
+" ---------------------------------------------------------
+" CODEKIT COMPATIBILITY
+" ---------------------------------------------------------
+"if has("gui_running")
+  "set nobackup
+  "set nowritebackup
+  "set noswapfile
+"endif
