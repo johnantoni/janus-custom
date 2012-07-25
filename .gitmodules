@@ -19,6 +19,4 @@
 [submodule "vim-less"]
 	path = vim-less
 	url = git://github.com/groenewege/vim-less.git
-[submodule "vim-monokai"]
-	path = vim-monokai
-	url = git://github.com/mwbrooks/vim-monokai.git
+
