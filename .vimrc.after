@@ -109,6 +109,8 @@ augroup vimrcEx
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
 
+  autocmd! BufRead,BufNewFile *.conf setfiletype nginx
+
   "spell check when writing commit logs
   autocmd filetype svn,*commit* setlocal spell
 augroup END

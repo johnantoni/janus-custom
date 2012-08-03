@@ -20,3 +20,6 @@
 	path = vim-less
 	url = git://github.com/groenewege/vim-less.git
 
+[submodule "nginx-vim-syntax"]
+	path = nginx-vim-syntax
+	url = https://github.com/andersjanmyr/nginx-vim-syntax.git
