@@ -247,11 +247,11 @@ endif
 :color jellybeans+
 
 " ---------------------------------------------------------
-" CODEKIT COMPATIBILITY
+" CODEKIT + TRANSMIT COMPATIBILITY
 " ---------------------------------------------------------
-"if has("gui_running")
-  "set nobackup
-  "set nowritebackup
-  "set noswapfile
-"endif
+if has("gui_running")
+  set nobackup
+  set nowritebackup
+  set noswapfile
+endif
 
