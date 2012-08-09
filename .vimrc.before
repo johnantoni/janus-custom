@@ -1,3 +1,9 @@
+if has("gui_running")
+  call janus#disable_plugin('nerdtree')
+  let g:loaded_netrw        = 1 " Disable netrw
+  let g:loaded_netrwPlugin  = 1 " Disable netrw
+end
+
 " map leader key to ','
 let mapleader=","
 
@@ -20,6 +26,3 @@ let g:indent_guides_guide_size=1
 " ctrl-p
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_map = '<leader>p'
-
-  "let loaded_nerd_tree=0
-
