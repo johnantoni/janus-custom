@@ -233,7 +233,7 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 " ---------------------------------------------------------
 if has("gui_running")
   set guioptions=-t "turn off toolbar
-  set lines=80 columns=250
+  set lines=60 columns=120
   set mouse=a "get full mouse support
 endif
 
@@ -243,8 +243,7 @@ endif
 :set t_Co=256
 :set background=light
 :set guifont=Menlo:h12
-":color grb256
-:color jellybeans+
+:color grb256
 
 " ---------------------------------------------------------
 " CODEKIT + TRANSMIT COMPATIBILITY
