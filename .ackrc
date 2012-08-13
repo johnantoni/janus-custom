@@ -4,3 +4,5 @@ html=.html.erb,.html.haml,.haml
 css=.sass,.less,.scss
 --type-add
 js=.hbr,.coffee
+
+--ignore-dir=vendor/bundle

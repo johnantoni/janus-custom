@@ -13,24 +13,16 @@ then pull this repo to create your own .janus config
 
     git clone git://github.com/johnantoni/janus-custom.git ~/.janus
 
-then symlink the .vimrc.before & .after files in .janus to the home dir by running
+then finally install the symlinks and upgrade the plugins via
 
     cd ~/.janus
-    ./symlink
-
-## upgrade submodules:
-
-It's simple to upgrade the sub-modules, simply run
-
-    cd ~/.janus
-    ./upgrade
+    rake
 
 ## included:
 
 * tabular: Vim script for text filtering and alignment
 * vim-coffee-script: coffeescript for vim
 * vim-endwise: wisely add "end" in ruby, endfunction/endif/more in vim script, etc
-* vim-indent-guides: add indent guides to your code
 
 ## customs:
 
@@ -43,24 +35,16 @@ all in the .vimrc.before & .vimrc.after
 * tab length locked to 2
 * status line show file editing, it's type (ruby) and on the far right the line number & character
 * current line auto-highlighted
-* theme used molokai
+* theme used grb256
+* nerdtree disabled for gvim/macvim (latest builds have a sidebar
+  built-in)
 
 ## notes:
 
-* you can start a block selection (visual mode) with leader+v then your command (ctrl+c = copy selection)
-* use command+/ to comment out each successive line
-* use command+[ or command+] to indent a line or selection
-* use leader+n to toggle NERDTree
+press f5 to clear the ctrl-p cache, vendor/bundle is excluded by default
 
 once the buffergator navigator is open you can close a buffer by using the arrow keys to navigate to it and hitting 'x' to close it
 
 ## ir_black osx theme
 
 To keep things consist thru the terminal, try @fyrabanks ir_black theme. Download it from here https://github.com/johnantoni/ir_black_terminal
-
-## todo:
-
-* find out why ack doesn't work on loading macvim via osx or "open new
-  macvim buffer here" but works when loaded via mvim .
-
-
