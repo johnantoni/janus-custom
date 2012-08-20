@@ -211,6 +211,7 @@ endif
 :set t_Co=256
 :set background=light
 :set guifont=Menlo:h12
+":set guifont=Meslo\ LG\ S:13
 :color grb256
 
 " ---------------------------------------------------------
