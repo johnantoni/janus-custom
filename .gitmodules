@@ -22,6 +22,3 @@
 [submodule "vim-slim"]
 	path = vim-slim
 	url = git://github.com/bbommarito/vim-slim.git
-[submodule "csv.vim"]
-	path = csv.vim
-	url = git://github.com/chrisbra/csv.vim.git
