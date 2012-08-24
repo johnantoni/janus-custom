@@ -2,6 +2,7 @@ if has("gui_running")
   call janus#disable_plugin('nerdtree')
   let g:loaded_netrw        = 1 " Disable netrw
   let g:loaded_netrwPlugin  = 1 " Disable netrw
+  set modifiable
 end
 
 " map leader key to ','
