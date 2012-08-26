@@ -5,9 +5,11 @@ task :default do
   system("ln -s ~/.janus/.ackrc ~/.ackrc")
   system("ln -s ~/.janus/.vimrc.before ~/.vimrc.before")
   system("ln -s ~/.janus/.vimrc.after ~/.vimrc.after")
+
+  Rake::Task["update"].invoke
 end
 
 task :update do
   # update plugins
-  system("git submodule -q foreach git pull -q origin master")
+  system("git pull && git submodule init && git submodule update && git submodule status")
 end
