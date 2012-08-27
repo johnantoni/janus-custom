@@ -3,6 +3,6 @@ html=.html.erb,.html.haml,.haml
 --type-add
 css=.sass,.less,.scss
 --type-add
-js=.hbr,.coffee
+js=.hbr,.coffee,.eco
 
 --ignore-dir=vendor/bundle
