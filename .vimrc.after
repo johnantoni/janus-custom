@@ -124,23 +124,8 @@ augroup END
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"map <leader>y "*y
-
-" Move around splits with <c-hjkl>
-"nnoremap <c-j> <c-w>j
-"nnoremap <c-k> <c-w>k
-"nnoremap <c-h> <c-w>h
-"nnoremap <c-l> <c-w>l
-
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space> 
-
-" Clear the search buffer when hitting return
-"function! MapCR()
-  "nnoremap <cr> :nohlsearch<cr>
-"endfunction
-"call MapCR()
-"nnoremap <leader><leader> <c-^>
 
 map <leader>q :ccl<ENTER>
 
@@ -158,7 +143,6 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OPEN FILES IN DIRECTORY OF CURRENT FILE
@@ -200,8 +184,8 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 " MACVIM SETTINGS
 " ---------------------------------------------------------
 if has("gui_running")
-  set guioptions=-t "turn off toolbar
-  set lines=60 columns=120
+
+  set lines=90 columns=200
   set mouse=a "get full mouse support
 endif
 
@@ -228,7 +212,6 @@ endif
 :set t_Co=256
 :set background=light
 :set guifont=Menlo:h12
-":set guifont=Meslo\ LG\ S:13
 :color grb256
 
 " ---------------------------------------------------------
