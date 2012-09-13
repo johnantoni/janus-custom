@@ -22,3 +22,9 @@
 [submodule "vim-slim"]
 	path = vim-slim
 	url = git://github.com/bbommarito/vim-slim.git
+[submodule "webapi-vim"]
+	path = webapi-vim
+	url = git://github.com/mattn/webapi-vim.git
+[submodule "gist-vim"]
+	path = gist-vim
+	url = git://github.com/mattn/gist-vim.git
