@@ -45,7 +45,15 @@ set cmdheight=2
 set switchbuf=useopen
 set numberwidth=5
 set showtabline=2
-set winwidth=79
+
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=7
+set winminheight=7
+set winheight=999
+
 set shell=bash
 
 " Prevent Vim from clobbering the scrollback buffer. See
@@ -123,11 +131,12 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space> 
 
 map <leader>q :ccl<ENTER>
+map <C-F> :Ack 
+map <C-P> :CtrlPMixed<ENTER>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
@@ -150,6 +159,11 @@ inoremap <s-tab> <c-n>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
+
+map <leader>ec :CtrlP app/controllers<cr>
+map <leader>ea :CtrlP app<cr>
+map <leader>em :CtrlP app/models<cr>
+map <leader>ev :CtrlP app/views<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
@@ -184,7 +198,6 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 " MACVIM SETTINGS
 " ---------------------------------------------------------
 if has("gui_running")
-
   set lines=90 columns=200
   set mouse=a "get full mouse support
 endif
