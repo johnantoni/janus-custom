@@ -223,9 +223,14 @@ endif
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set t_Co=256
-:set background=light
+:set background=dark
 :set guifont=Menlo:h12
-:color grb256
+
+if has("gui_running")
+  :color solarized
+else
+  :color grb256
+endif
 
 " ---------------------------------------------------------
 " CODEKIT + TRANSMIT COMPATIBILITY
