@@ -1,8 +1,8 @@
 if has("gui_running")
-  call janus#disable_plugin('nerdtree')
-  let g:loaded_netrw        = 1 " Disable netrw
-  let g:loaded_netrwPlugin  = 1 " Disable netrw
-  set modifiable
+  "call janus#disable_plugin('nerdtree')
+  "let g:loaded_netrw        = 1 " Disable netrw
+  "let g:loaded_netrwPlugin  = 1 " Disable netrw
+  "set modifiable
 end
 
 let mapleader=","
@@ -21,3 +21,4 @@ map <leader>a :Ack
 " ctrl-p mapping
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_working_path_mode = 2
+let g:ctrlp_show_hidden = 1 " make dotfiles searchable
