@@ -5,7 +5,6 @@ if has("gui_running")
   set modifiable
 end
 
-" map leader key to ','
 let mapleader=","
 
 " ---------------------------------------------------------
@@ -13,11 +12,12 @@ let mapleader=","
 " ---------------------------------------------------------
 " suppress BufferGator default mapping
 let g:buffergator_suppress_keymaps = 1
-" so we can make it toggle view on leader+b
+" toggle view
 map <leader>b :BuffergatorToggle<cr>
 
-" map ack search-in-file to leader+a
+" map ack search-in-file
 map <leader>a :Ack 
 
-" ctrl-p
+" ctrl-p mapping
+let g:ctrlp_map = '<leader>p'
 let g:ctrlp_working_path_mode = 2

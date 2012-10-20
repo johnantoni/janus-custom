@@ -54,12 +54,7 @@ set winheight=7
 set winminheight=7
 set winheight=999
 
-set shell=bash
-
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-" (handled by default with JANUS)
-" set t_ti= t_te=
+set shell=zsh
 
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
@@ -113,6 +108,7 @@ augroup vimrcEx
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
   autocmd! BufRead,BufNewFile *.lock setfiletype ruby 
   autocmd! BufRead,BufNewFile *.pill setfiletype ruby 
+  autocmd! BufRead,BufNewFile *.json_builder setfiletype ruby 
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
@@ -224,12 +220,13 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set t_Co=256
 :set background=dark
-:set guifont=Menlo:h12
 
 if has("gui_running")
   :color solarized
+  :set guifont=Menlo:h13
 else
   :color grb256
+  :set guifont=Menlo:h12
 endif
 
 " ---------------------------------------------------------
