@@ -216,12 +216,6 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
   \ }
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" InsertTime COMMAND
-" Insert the current time
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
-
 " ---------------------------------------------------------
 " stop indenting when pasting to vim in osx
 " ---------------------------------------------------------
