@@ -16,7 +16,7 @@ let g:buffergator_suppress_keymaps = 1
 map <leader>b :BuffergatorToggle<cr>
 
 " map ack search-in-file
-map <leader>a :Ack 
+map <leader>a :Ack
 
 " ctrl-p mapping
 let g:ctrlp_map = '<leader>p'

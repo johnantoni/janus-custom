@@ -40,7 +40,7 @@ set ignorecase smartcase
 " highlight current line
 set cursorline
 
-set cmdheight=2 
+set cmdheight=2
 set switchbuf=useopen
 set numberwidth=5
 set showtabline=2
@@ -55,6 +55,9 @@ set winheight=999
 
 set shell=zsh
 
+" Use Ack instead of grep
+set grepprg=ack
+
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
 
@@ -67,7 +70,7 @@ set noswapfile
 set backspace=indent,eol,start
 
 " display incomplete commands
-set showcmd 
+set showcmd
 
 " Enable highlighting for syntax
 syntax on
@@ -86,6 +89,38 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+
+" (Hopefully) removes the delay when hitting esc in insert mode
+set noesckeys
+
+" Don't wait so long for the next keypress (particularly in ambigious Leader
+" situations.
+set timeoutlen=500
+
+" When i hit :Q change it to :q
+command! Q q " Bind :Q to :q
+
+" Set the tag file search order
+set tags=./tags;
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" KEY MAPS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-A> :Ack<space>
+imap <C-A> <esc>:Ack<space>
+
+map <C-T> :CtrlPMixed<ENTER>
+imap <C-T> <esc>:CtrlPMixed<ENTER>
+
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+map <leader>e :edit %%
+map <leader>v :view %%
+map <leader>ec :CtrlP app/controllers<cr>
+map <leader>ea :CtrlP app<cr>
+map <leader>em :CtrlP app/models<cr>
+map <leader>ev :CtrlP app/views<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
@@ -107,15 +142,26 @@ augroup vimrcEx
   "don't remember file position for git commits
   autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
-  autocmd! BufRead,BufNewFile *.sass setfiletype sass 
-  autocmd! BufRead,BufNewFile *.lock setfiletype ruby 
-  autocmd! BufRead,BufNewFile *.pill setfiletype ruby 
-  autocmd! BufRead,BufNewFile *.json_builder setfiletype ruby 
+  autocmd! BufRead,BufNewFile *.sass setfiletype sass
+  autocmd! BufRead,BufNewFile *.lock setfiletype ruby
+  autocmd! BufRead,BufNewFile *.pill setfiletype ruby
+  autocmd! BufRead,BufNewFile *.json_builder setfiletype ruby
+
+  " Set up some useful Rails.vim bindings for working with Backbone.js
+  "autocmd User Rails Rnavcommand template    app/assets/templates               -glob=**/*  -suffix=.jst.ejs
+  "autocmd User Rails Rnavcommand jmodel      app/assets/javascripts/models      -glob=**/*  -suffix=.coffee
+  "autocmd User Rails Rnavcommand jview       app/assets/javascripts/views       -glob=**/*  -suffix=.coffee
+  "autocmd User Rails Rnavcommand jcollection app/assets/javascripts/collections -glob=**/*  -suffix=.coffee
+  "autocmd User Rails Rnavcommand jrouter     app/assets/javascripts/routers     -glob=**/*  -suffix=.coffee
+  "autocmd User Rails Rnavcommand jspec       spec/javascripts                   -glob=**/*  -suffix=.coffee
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
 
   autocmd! BufRead,BufNewFile *.conf setfiletype nginx
+
+  " Remove trailing whitespace on save for ruby files.
+  autocmd BufWritePre *.rb :%s/\s\+$//e
 
   "spell check when writing commit logs
   autocmd filetype svn,*commit* setlocal spell
@@ -125,19 +171,6 @@ augroup END
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MISC KEY MAPS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Insert a hash rocket with <c-l>
-imap <c-l> <space>=><space>
-
-map <leader>q :ccl<ENTER>
-map <C-F> :Ack 
-map <C-P> :CtrlPMixed<ENTER>
-
-" Fast saving
-map <leader>w :w!<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
@@ -153,18 +186,6 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OPEN FILES IN DIRECTORY OF CURRENT FILE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
-map <leader>v :view %%
-
-map <leader>ec :CtrlP app/controllers<cr>
-map <leader>ea :CtrlP app<cr>
-map <leader>em :CtrlP app/models<cr>
-map <leader>ev :CtrlP app/views<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
