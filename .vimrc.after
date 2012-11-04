@@ -239,6 +239,10 @@ endif
 :set t_Co=256
 :set background=dark
 
+" install the patched menlo font https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
+" then flush the powerline cache, :PowerlineClearCache
+let g:Powerline_symbols='fancy'
+
 if has("gui_running")
   set lines=90 columns=200
   set mouse=a "get full mouse support
