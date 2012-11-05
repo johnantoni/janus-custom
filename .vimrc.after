@@ -115,12 +115,22 @@ imap <C-T> <esc>:CtrlPMixed<ENTER>
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
+imap <C-l> :<Space>
+
 map <leader>e :edit %%
 map <leader>v :view %%
 map <leader>ec :CtrlP app/controllers<cr>
 map <leader>ea :CtrlP app<cr>
 map <leader>em :CtrlP app/models<cr>
 map <leader>ev :CtrlP app/views<cr>
+
+" Emacs-like beginning and end of line.
+imap <c-e> <c-o>$
+imap <c-a> <c-o>^
+
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
