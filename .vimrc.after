@@ -132,6 +132,9 @@ imap <c-a> <c-o>^
 map j gj
 map k gk
 
+map <Leader>po :!powder open<CR><enter>
+map <Leader>pk :!powder restart<CR><enter>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
