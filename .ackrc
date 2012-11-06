@@ -1,8 +1,12 @@
---type-add
-html=.html.erb,.html.haml,.haml
---type-add
-css=.sass,.less,.scss
---type-add
-js=.hbr,.coffee,.eco
+--type-add=ruby=.haml,.rake,.rsel,.builder
+--type-add=html=.html.erb,.html.haml,.haml
+--type-add=css=.sass,.less,.scss
+--type-add=js=.hbr,.coffee,.eco
+--type-set=cucumber=.feature
 
---ignore-dir=vendor/bundle
+--ignore-dir=vendor
+--ignore-dir=log
+--ignore-dir=tmp
+
+--sort-files
+--color
