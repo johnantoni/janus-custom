@@ -1,7 +1,7 @@
 " BASIC SETTINGS
 " ---------------------------------------------------------
 " make incompatible to vi
-set nocompatible
+:set nocompatible
 
 compiler ruby " Enable compiler support for ruby
 
@@ -61,11 +61,6 @@ set grepprg=ack
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
 
-" no need for backups
-set nobackup
-set nowritebackup
-set noswapfile
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -90,11 +85,10 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" (Hopefully) removes the delay when hitting esc in insert mode
-set noesckeys
+" avoid, breaks normal vim's arrow keys in insert mode
+"set noesckeys
 
-" Don't wait so long for the next keypress (particularly in ambigious Leader
-" situations.
+" Don't wait so long for the next keypress (particularly in leader situations)
 set timeoutlen=500
 
 " When i hit :Q change it to :q
@@ -103,37 +97,67 @@ command! Q q " Bind :Q to :q
 " Set the tag file search order
 set tags=./tags;
 
+" no need for backups with git/svn/etc.
+set nobackup
+set nowritebackup
+set noswapfile
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrl+a find-in-file (insert & normal mode)
 map <C-A> :Ack<space>
 imap <C-A> <esc>:Ack<space>
 
+" ctrl+t file find (insert & normal mode)
 map <C-T> :CtrlPMixed<ENTER>
 imap <C-T> <esc>:CtrlPMixed<ENTER>
 
+" ctrl+s save (insert & normal mode)
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
-imap <C-l> :<Space>
+" type jj quickly to exit insert mode
+imap jj <Esc>
 
+" ctrl+l goto end of line insert mode
+imap <C-l> <esc>$a
+
+" treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NAVIGATING SPLITS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrl+w to switch splits
+" ctrl+w then s, to open horizonal (top/bottom)
+" ctrl+w then v, to open vertical (side by side)
+" ctrl+w then q, to close one
+
+" move around splits in normal mode <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LEADER KEYS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" open files in directory of current file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
+
+" ctrl+p rails shortcuts
 map <leader>ec :CtrlP app/controllers<cr>
 map <leader>ea :CtrlP app<cr>
 map <leader>em :CtrlP app/models<cr>
 map <leader>ev :CtrlP app/views<cr>
 
-" Emacs-like beginning and end of line.
-imap <c-e> <c-o>$
-imap <c-a> <c-o>^
-
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
-
-map <Leader>po :!powder open<CR><enter>
-map <Leader>pk :!powder restart<CR><enter>
+" shortcuts to restart / open rails app in browser
+map <leader>po :!powder open<CR><enter>
+map <leader>pk :!powder restart<CR><enter>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
