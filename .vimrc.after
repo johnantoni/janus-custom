@@ -184,6 +184,9 @@ augroup vimrcEx
   autocmd! BufRead,BufNewFile *.pill setfiletype ruby
   autocmd! BufRead,BufNewFile *.json_builder setfiletype ruby
 
+  "for haml_coffee_assets ~ https://github.com/netzpirat/haml_coffee_assets
+  autocmd! BufRead,BufNewFile *.hamlc setfiletype haml
+
   " Set up some useful Rails.vim bindings for working with Backbone.js
   "autocmd User Rails Rnavcommand template    app/assets/templates               -glob=**/*  -suffix=.jst.ejs
   "autocmd User Rails Rnavcommand jmodel      app/assets/javascripts/models      -glob=**/*  -suffix=.coffee
