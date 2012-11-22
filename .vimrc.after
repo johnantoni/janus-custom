@@ -91,9 +91,6 @@ set tm=500
 " Don't wait so long for the next keypress (particularly in leader situations)
 set timeoutlen=500
 
-" When i hit :Q change it to :q
-command! Q q " Bind :Q to :q
-
 " Set the tag file search order
 set tags=./tags;
 
@@ -105,6 +102,12 @@ set noswapfile
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" When i hit :Q change it to :q
+command! Q q
+
+" Rather than hit ;+shift to get : then command, just hit ; to start a command
+nnoremap ; :
+
 " ctrl+a find-in-file (insert & normal mode)
 map <C-A> :Ack<space>
 imap <C-A> <esc>:Ack<space>
@@ -123,9 +126,17 @@ imap jj <Esc>
 " ctrl+l goto end of line insert mode
 imap <C-l> <esc>$a
 
-" treat long lines as break lines (useful when moving around in them)
+" jumps to the next line of long lines of text, useful for moving around
 map j gj
 map k gk
+
+" if a file needs sudo access to write, make it so
+cnoreabbrev <expr> w!!
+                \((getcmdtype() == ':' && getcmdline() == 'w!!')
+                \?('!sudo tee % >/dev/null'):('w!!'))
+
+" clear search buffer
+nmap <silent> ,/ :nohlsearch<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NAVIGATING SPLITS
