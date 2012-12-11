@@ -198,6 +198,9 @@ augroup vimrcEx
   "for haml_coffee_assets ~ https://github.com/netzpirat/haml_coffee_assets
   autocmd! BufRead,BufNewFile *.hamlc setfiletype haml
 
+  autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype='html'
+  autocmd BufNewFile,BufRead *.mobile.erb set filetype=eruby
+
   " Set up some useful Rails.vim bindings for working with Backbone.js
   "autocmd User Rails Rnavcommand template    app/assets/templates               -glob=**/*  -suffix=.jst.ejs
   "autocmd User Rails Rnavcommand jmodel      app/assets/javascripts/models      -glob=**/*  -suffix=.coffee
