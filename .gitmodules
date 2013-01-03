@@ -21,7 +21,7 @@
 	url = git://github.com/andersjanmyr/nginx-vim-syntax.git
 [submodule "vim-slim"]
 	path = vim-slim
-	url = git://github.com/bbommarito/vim-slim.git
+	url = git@github.com:johnantoni/vim-slim.git
 [submodule "webapi-vim"]
 	path = webapi-vim
 	url = git://github.com/mattn/webapi-vim.git
