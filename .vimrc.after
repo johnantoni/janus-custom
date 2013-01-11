@@ -291,11 +291,10 @@ endif
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set t_Co=256
-:set background=dark
+:set background=dark 
 
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
-  set background=light
 endif
 
 " install the patched menlo font https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
@@ -305,12 +304,14 @@ let g:Powerline_symbols='fancy'
 if has("gui_running")
   set lines=90 columns=200
   set mouse=a "get full mouse support
+
   :color solarized
   :set guifont=Menlo:h13
 else
+  let g:solarized_termtrans = 1
+  let g:solarized_termcolors=256
+  :color solarized 
   ":color grb256
-  :color solarized
   :set guifont=Menlo:h12
-  :set background=light
 endif
 
