@@ -308,10 +308,7 @@ if has("gui_running")
   :color solarized
   :set guifont=Menlo:h13
 else
-  let g:solarized_termtrans = 1
-  let g:solarized_termcolors=256
-  :color solarized 
-  ":color grb256
+  :color grb256
   :set guifont=Menlo:h12
 endif
 
