@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>My vi/vim cheatsheet</title>
+</head>
+<body>
+<h2>Cursor movement</h2>
+<ul>
+<li>h - move left</li>
+<li>j - move down</li>
+<li>k - move up</li>
+<li>l - move right</li>
+<li>w - jump by start of words (punctuation considered words)</li>
+<li>W - jump by words (spaces separate words)</li>
+<li>e - jump to end of words (punctuation considered words)</li>
+<li>E - jump to end of words (no punctuation)</li>
+<li>b - jump backward by words (punctuation considered words)</li>
+<li>B - jump backward by words (no punctuation)</li>
+<li>0 - (zero) start of line</li>
+<li>^ - first non-blank character of line</li>
+<li>$ - end of line</li>
+<li>G - Go To command (prefix with number - 5G goes to line 5)</li>
+</ul>
+<p><b>Note:</b> Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.</p>
+
+<h2>Insert Mode - Inserting/Appending text</h2>
+<ul>
+<li>i - start insert mode at cursor</li>
+<li>I - insert at the beginning of the line</li>
+<li>a - append after the cursor</li>
+<li>A - append at the end of the line</li>
+<li>o - open (append) blank line below current line (no need to press return)</li>
+<li>O - open blank line above current line</li>
+<li>ea - append at end of word</li>
+<li>Esc - exit insert mode</li>
+</ul>
+
+<h2>Editing</h2>
+<ul>
+<li>r - replace a single character (does not use insert mode)</li>
+<li>J - join line below to the current one</li>
+<li>cc - change (replace) an entire line</li>
+<li>cw - change (replace) to the end of word</li>
+<li>c$ - change (replace) to the end of line</li>
+<li>s - delete character at cursor and subsitute text</li>
+<li>S - delete line at cursor and substitute text (same as cc)</li>
+<li>xp - transpose two letters (delete and paste, technically)</li>
+<li>u - undo</li>
+<li>. - repeat last command</li>
+</ul>
+
+<h2>Marking text (visual mode)</h2>
+<ul>
+<li>v - start visual mode, mark lines, then do command (such as y-yank)</li>
+<li>V - start Linewise visual mode</li>
+<li>o - move to other end of marked area</li>
+<li>Ctrl+v - start visual block mode</li>
+<li>O - move to Other corner of block</li>
+<li>aw - mark a word</li>
+<li>ab - a () block (with braces)</li>
+<li>aB - a {} block (with brackets)</li>
+<li>ib - inner () block</li>
+<li>iB - inner {} block</li>
+<li>Esc - exit visual mode</li>
+</ul>
+
+<h2>Visual commands</h2>
+<ul>
+<li>&gt; - shift right</li>
+<li>&lt; - shift left</li>
+<li>y - yank (copy) marked text</li>
+<li>d - delete marked text</li>
+<li>~ - switch case</li>
+</ul>
+
+<h2>Cut and Paste</h2>
+<ul>
+<li>yy - yank (copy) a line</li>
+<li>2yy - yank 2 lines</li>
+<li>yw - yank word</li>
+<li>y$ - yank to end of line</li>
+<li>p - put (paste) the clipboard after cursor</li>
+<li>P - put (paste) before cursor</li>
+<li>dd - delete (cut) a line</li>
+<li>dw - delete (cut) the current word</li>
+<li>x - delete (cut) current character</li>
+</ul>
+
+<h2>Exiting</h2>
+<ul>
+<li>:w - write (save) the file, but don't exit</li>
+<li>:wq - write (save) and quit</li>
+<li>:q - quit (fails if anything has changed)</li>
+<li>:q! - quit and throw away changes</li>
+</ul>
+
+<h2>Search/Replace</h2>
+<ul>
+<li>/<i>pattern</i> - search for pattern</li>
+<li>?<i>pattern</i> - search backward for pattern</li>
+<li>n - repeat search in same direction</li>
+<li>N - repeat search in opposite direction</li>
+<li>:%s/<i>old</i>/<i>new</i>/g - replace all <i>old</i> with <i>new</i> throughout file</li>
+<li>:%s/<i>old</i>/<i>new</i>/gc - replace all <i>old</i> with <i>new</i> throughout file with confirmations</li>
+</ul>
+
+<h2>Working with multiple files</h2>
+<ul>
+<li>:e <i>filename</i> - Edit a file in a new buffer</li>
+<li>:bnext (or :bn) - go to next buffer</li>
+<li>:bprev (of :bp) - go to previous buffer</li>
+<li>:bd - delete a buffer (close a file)</li>
+<li>:sp <i>filename</i> - Open a file in a new buffer and split window</li>
+<li>ctrl+ws - Split windows</li>
+<li>ctrl+ww - switch between windows</li>
+<li>ctrl+wq - Quit a window</li>
+<li>ctrl+wv - Split windows vertically</li>
+</ul>
+
+</body>
+</html>
