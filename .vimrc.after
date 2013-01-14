@@ -10,6 +10,8 @@ compiler ruby " Enable compiler support for ruby
 :set linebreak
 :set nolist  " list disables linebreak
 
+let g:netrw_cursorline = 0
+
 " allow unsaved background buffers and remember marks/undo for them
 set hidden
 
@@ -80,12 +82,9 @@ set wildmode=list:longest,full
 set wildmenu
 
 " no annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
+:set vb
 
-" avoid, breaks normal vim's arrow keys in insert mode
+" do not enable: breaks normal vim's arrow keys in insert mode
 "set noesckeys
 
 " Don't wait so long for the next keypress (particularly in leader situations)
@@ -202,12 +201,12 @@ augroup vimrcEx
   autocmd BufNewFile,BufRead *.mobile.erb set filetype=eruby
 
   " Set up some useful Rails.vim bindings for working with Backbone.js
-  "autocmd User Rails Rnavcommand template    app/assets/templates               -glob=**/*  -suffix=.jst.ejs
-  "autocmd User Rails Rnavcommand jmodel      app/assets/javascripts/models      -glob=**/*  -suffix=.coffee
-  "autocmd User Rails Rnavcommand jview       app/assets/javascripts/views       -glob=**/*  -suffix=.coffee
-  "autocmd User Rails Rnavcommand jcollection app/assets/javascripts/collections -glob=**/*  -suffix=.coffee
-  "autocmd User Rails Rnavcommand jrouter     app/assets/javascripts/routers     -glob=**/*  -suffix=.coffee
-  "autocmd User Rails Rnavcommand jspec       spec/javascripts                   -glob=**/*  -suffix=.coffee
+  autocmd User Rails Rnavcommand template    app/assets/templates               -glob=**/*  -suffix=.jst.ejs
+  autocmd User Rails Rnavcommand jmodel      app/assets/javascripts/models      -glob=**/*  -suffix=.coffee
+  autocmd User Rails Rnavcommand jview       app/assets/javascripts/views       -glob=**/*  -suffix=.coffee
+  autocmd User Rails Rnavcommand jcollection app/assets/javascripts/collections -glob=**/*  -suffix=.coffee
+  autocmd User Rails Rnavcommand jrouter     app/assets/javascripts/routers     -glob=**/*  -suffix=.coffee
+  autocmd User Rails Rnavcommand jspec       spec/javascripts                   -glob=**/*  -suffix=.coffee
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
@@ -261,7 +260,7 @@ map <leader>r :call RenameFile()<cr>
 set wildignore+=*/vendor/bundle/*
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc$',
-  \ 'file': '\.exe$\|\.so$\|\.dat$'
+  \ 'file': '\.exe$\|\.so$\|\.dat$\|\.gitkeep$',
   \ }
 
 " https://github.com/kien/ctrlp.vim/issues/160 selections open in new tab
