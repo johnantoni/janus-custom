@@ -38,6 +38,7 @@ then finally install the symlinks and upgrade the plugins via
 
 * m => modify node
 * m then a => create new file/dir
+* r => refresh nerdtree
 
 ## customs:
 
