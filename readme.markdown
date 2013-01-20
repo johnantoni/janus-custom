@@ -24,6 +24,19 @@ then finally install the symlinks and upgrade the plugins via
 * vim-coffee-script: coffeescript for vim
 * vim-endwise: wisely add "end" in ruby, endfunction/endif/more in vim script, etc
 
+## help:
+
+leader n => open nerdtree
+leader r => rename current file
+ctrl+a => do an ack search (search for text in files in current root)
+ctri+t => do a ctrl+p search (jump to file ala textmate)
+ctrl+s => save file
+
+### in nerdtree
+
+m => modify node
+m then a => create new file/dir
+
 ## customs:
 
 all in the .vimrc.before & .vimrc.after
