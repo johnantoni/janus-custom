@@ -26,6 +26,8 @@ then finally install the symlinks and upgrade the plugins via
 
 ## help:
 
+* ; will be interpreted as : (saves an extra keystroke)
+
 * leader n => open nerdtree
 * leader r => rename current file
 * ctrl+a => do an ack search (search for text in files in current root)
