@@ -26,16 +26,16 @@ then finally install the symlinks and upgrade the plugins via
 
 ## help:
 
-leader n => open nerdtree
-leader r => rename current file
-ctrl+a => do an ack search (search for text in files in current root)
-ctri+t => do a ctrl+p search (jump to file ala textmate)
-ctrl+s => save file
+* leader n => open nerdtree
+* leader r => rename current file
+* ctrl+a => do an ack search (search for text in files in current root)
+* ctri+t => do a ctrl+p search (jump to file ala textmate)
+* ctrl+s => save file
 
 ### in nerdtree
 
-m => modify node
-m then a => create new file/dir
+* m => modify node
+* m then a => create new file/dir
 
 ## customs:
 
