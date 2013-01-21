@@ -1,15 +1,10 @@
 let mapleader=","
 
-" suppress BufferGator default mapping
-let g:buffergator_suppress_keymaps = 1
+let g:buffergator_suppress_keymaps = 1 " suppress BufferGator default mapping
+map <leader>b :BuffergatorToggle<cr> " toggle view
 
-" toggle view
-map <leader>b :BuffergatorToggle<cr>
-
-" map ack search-in-file
 map <leader>a :Ack
 
-" ctrl-p mapping
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_show_hidden = 1 " make dotfiles searchable
