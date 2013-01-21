@@ -1,25 +1,19 @@
+" ---------------------------------------------------------
 " BASIC SETTINGS
 " ---------------------------------------------------------
-" make incompatible to vi
-:set nocompatible
+:set nocompatible " make incompatible to vi
 
 compiler ruby " Enable compiler support for ruby
 
-" wrap lines
-:set wrap
+:set wrap " wrap lines
 :set linebreak
 :set nolist  " list disables linebreak
 
 let g:netrw_cursorline = 0
 
-" allow unsaved background buffers and remember marks/undo for them
-set hidden
-
-" show line numbers
-set number
-
-" remember more commands and search history
-set history=10000
+set hidden " allow unsaved background buffers and remember marks/undo for them
+set number " show line numbers
+set history=10000 " remember more commands and search history
 
 "display tabs and trailing spaces
 set list
@@ -36,11 +30,8 @@ set showmatch
 set incsearch
 set hlsearch
 
-" make searches case-sensitive only if they contain upper-case characters
-set ignorecase smartcase
-
-" highlight current line
-set cursorline
+set ignorecase smartcase " make searches case-sensitive only if they contain upper-case characters
+set cursorline " highlight current line
 
 set cmdheight=2
 set switchbuf=useopen
@@ -55,57 +46,36 @@ set winheight=10
 set winminheight=10
 set winheight=999
 
-set shell=zsh
+set shell=zsh " use ZSH
+set grepprg=ack " use Ack instead of grep
 
-" Use Ack instead of grep
-set grepprg=ack
+set scrolloff=3 " keep more context when scrolling off the end of a buffer
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set showcmd " display incomplete commands
 
-" keep more context when scrolling off the end of a buffer
-set scrolloff=3
+syntax on " Enable highlighting for syntax
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+filetype plugin indent on " load indent files, to automatically do language-dependent indenting.
 
-" display incomplete commands
-set showcmd
+set wildmode=list:longest,full " use emacs-style tab completion when selecting files, etc
+set wildmenu " make tab completion for files/buffers act like bash
 
-" Enable highlighting for syntax
-syntax on
+"set noesckeys " DO NOT ENABLE breaks normal vim's arrow keys in insert mode
 
-" load indent files, to automatically do language-dependent indenting.
-filetype plugin indent on
-
-" use emacs-style tab completion when selecting files, etc
-set wildmode=list:longest,full
-
-" make tab completion for files/buffers act like bash
-set wildmenu
-
-" no annoying sound on errors
-:set vb
-
-" do not enable: breaks normal vim's arrow keys in insert mode
-"set noesckeys
-
-" Don't wait so long for the next keypress (particularly in leader situations)
-set timeoutlen=500
-
-" Set the tag file search order
-set tags=./tags;
+:set vb " no annoying sound on errors
+set timeoutlen=500 " Don't wait so long for the next keypress (particularly in leader situations)
+set tags=./tags; " Set the tag file search order
 
 " no need for backups with git/svn/etc.
 set nobackup
 set nowritebackup
 set noswapfile
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " KEY MAPS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When i hit :Q change it to :q
-command! Q q
-
-" Rather than hit ;+shift to get : then command, just hit ; to start a command
-nnoremap ; :
+" ---------------------------------------------------------
+command! Q q " Substitute :Q for :q to save retypes
+nnoremap ; : " Substitute ; for : to save keystrokes
 
 " ctrl+a find-in-file (insert & normal mode)
 map <C-A> :Ack<space>
@@ -119,11 +89,8 @@ imap <C-T> <esc>:CtrlPMixed<ENTER>
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
-" type jj quickly to exit insert mode
-imap jj <Esc>
-
-" ctrl+l goto end of line insert mode
-imap <C-l> <esc>$a
+imap jj <Esc> " type jj quickly to exit insert mode
+imap <C-l> <esc>$a " ctrl+l goto end of line insert mode
 
 " jumps to the next line of long lines of text, useful for moving around
 map j gj
@@ -134,12 +101,11 @@ cnoreabbrev <expr> w!!
                 \((getcmdtype() == ':' && getcmdline() == 'w!!')
                 \?('!sudo tee % >/dev/null'):('w!!'))
 
-" clear search buffer
-nmap <silent> ,/ :nohlsearch<CR>
+nmap <silent> ,/ :nohlsearch<CR> " clear search buffer
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " NAVIGATING SPLITS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " ctrl+w to switch splits
 " ctrl+w then s, to open horizonal (top/bottom)
 " ctrl+w then v, to open vertical (side by side)
@@ -151,9 +117,9 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " LEADER KEYS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " open files in directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
@@ -169,13 +135,14 @@ map <leader>ev :CtrlP app/views<cr>
 map <leader>po :!powder open<CR><enter>
 map <leader>pk :!powder restart<CR><enter>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " CUSTOM AUTOCMDS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
   autocmd FileType text setlocal textwidth=78
+
   " Jump to last cursor position unless it's invalid or in an event handler
   autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -213,22 +180,19 @@ augroup vimrcEx
 
   autocmd! BufRead,BufNewFile *.conf setfiletype nginx
 
-  " Remove trailing whitespace on save for ruby files.
-  autocmd BufWritePre *.rb :%s/\s\+$//e
-
-  "spell check when writing commit logs
-  autocmd filetype svn,*commit* setlocal spell
+  autocmd BufWritePre *.rb :%s/\s\+$//e " Remove trailing whitespace on save for ruby files.
+  autocmd filetype svn,*commit* setlocal spell "spell check when writing commit logs
 augroup END
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " STATUS LINE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 :set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " MULTIPURPOSE TAB KEY
+" ---------------------------------------------------------
 " Indent if we're at the beginning of a line. Else, do completion.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -240,9 +204,9 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " RENAME CURRENT FILE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 function! RenameFile()
     let old_name = expand('%')
     let new_name = input('New file name: ', expand('%'), 'file')
@@ -254,9 +218,9 @@ function! RenameFile()
 endfunction
 map <leader>r :call RenameFile()<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " Exclude content from searching
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 set wildignore+=*/vendor/bundle/*
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc$',
@@ -286,9 +250,9 @@ if &term =~ "xterm.*"
     cmap <Esc>[201~ <nop>
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 " COLOR
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ---------------------------------------------------------
 :set t_Co=256
 :set background=dark 
 
@@ -310,4 +274,3 @@ else
   :color grb256
   :set guifont=Menlo:h12
 endif
-
