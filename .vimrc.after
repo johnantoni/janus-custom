@@ -224,7 +224,7 @@ map <leader>r :call RenameFile()<cr>
 set wildignore+=*/vendor/bundle/*
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc$',
-  \ 'file': '\.exe$\|\.so$\|\.dat$\|\.gitkeep$\|\.lock',
+  \ 'file': '\.exe$\|\.so$\|\.dat$\|\.gitkeep$\|\Gemfile.lock',
   \ }
 
 " https://github.com/kien/ctrlp.vim/issues/160 selections open in new tab
