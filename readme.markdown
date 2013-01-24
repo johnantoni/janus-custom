@@ -4,6 +4,12 @@ customized janus config for vim & macvim
 
 ## to install:
 
+### requirements
+
+    sudo apt-get install ack-grep
+
+### ready to install
+
 first install janus: 
 
     cd ~
