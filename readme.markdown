@@ -7,6 +7,7 @@ customized janus config for vim & macvim
 ### requirements
 
     sudo apt-get install ack-grep
+    sudo ln -sf /usr/bin/ack-grep /usr/local/bin/ack
 
 ### ready to install
 
