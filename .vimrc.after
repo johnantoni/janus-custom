@@ -104,10 +104,20 @@ nmap <silent> ,/ :nohlsearch<CR> " clear search buffer
 " --------------------------------------------------------
 " LEADER KEYS
 " ---------------------------------------------------------
-" stop using ctrl+something, just stick to the leader key
+" stop using ctrl+something, bad habit
+
+" notes
+"<leader>gb maps to :Gblame<CR>
+"<leader>gs maps to :Gstatus<CR>
+"<leader>gd maps to :Gdiff<CR>
+"<leader>gl maps to :Glog<CR>
+"<leader>gc maps to :Gcommit<CR>
+"<leader>gp maps to :Git push<CR>
 
 map <leader>a :Ack<space>
 map <leader>t :CtrlPMixed<ENTER>
+
+"<leader>b view buffer
 
 " save
 map <leader>s :w!<CR>
