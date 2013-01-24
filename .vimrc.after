@@ -74,23 +74,21 @@ set noswapfile
 " ---------------------------------------------------------
 " KEY MAPS
 " ---------------------------------------------------------
-command! Q q " Substitute :Q for :q to save retypes
-nnoremap ; : " Substitute ; for : to save keystrokes
-
-" ctrl+a find-in-file (insert & normal mode)
-map <C-A> :Ack<space>
-imap <C-A> <esc>:Ack<space>
-
-" ctrl+t file find (insert & normal mode)
-map <C-T> :CtrlPMixed<ENTER>
-imap <C-T> <esc>:CtrlPMixed<ENTER>
+" Substitute :Q for :q to save retypes
+command! Q q
+" Substitute ; for : to save keystrokes
+nnoremap ; :
+" Use leader+leader as :
+nnoremap <Leader><Leader> :
 
 " ctrl+s save (insert & normal mode)
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
-imap jj <Esc> " type jj quickly to exit insert mode
-imap <C-l> <esc>$a " ctrl+l goto end of line insert mode
+" type jj quickly to exit insert mode
+imap jj <Esc>
+" ctrl+l goto end of line insert mode
+imap <C-l> <esc>$a
 
 " jumps to the next line of long lines of text, useful for moving around
 map j gj
@@ -103,23 +101,24 @@ cnoreabbrev <expr> w!!
 
 nmap <silent> ,/ :nohlsearch<CR> " clear search buffer
 
-" ---------------------------------------------------------
-" NAVIGATING SPLITS
-" ---------------------------------------------------------
-" ctrl+w to switch splits
-" ctrl+w then s, to open horizonal (top/bottom)
-" ctrl+w then v, to open vertical (side by side)
-" ctrl+w then q, to close one
-
-" move around splits in normal mode <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" ---------------------------------------------------------
+" --------------------------------------------------------
 " LEADER KEYS
 " ---------------------------------------------------------
+" stop using ctrl+something, just stick to the leader key
+
+map <leader>a :Ack<space>
+map <leader>t :CtrlPMixed<ENTER>
+
+" save
+map <leader>s :w!<CR>
+map <leader>w :w!<CR>
+" save and close
+map <leader>W :wq!<CR>
+" close current window
+map <leader>q :q!<CR>
+" close all windows
+map <leader>Q :qa!<CR>
+
 " open files in directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
@@ -131,9 +130,19 @@ map <leader>ea :CtrlP app<cr>
 map <leader>em :CtrlP app/models<cr>
 map <leader>ev :CtrlP app/views<cr>
 
+" navigate windows
+" move to the window left
+" move to the window below
+" move to the window above
+" move to the window right
+map <Leader>h <C-W>h
+map <Leader>j <C-W>j
+map <Leader>k <C-W>k
+map <Leader>l <C-W>l
+
 " shortcuts to restart / open rails app in browser
-map <leader>po :!powder open<CR><enter>
-map <leader>pk :!powder restart<CR><enter>
+"map <leader>po :!powder open<CR><enter>
+"map <leader>pk :!powder restart<CR><enter>
 
 " ---------------------------------------------------------
 " CUSTOM AUTOCMDS
