@@ -3,6 +3,8 @@
 " ---------------------------------------------------------
 :set nocompatible " make incompatible to vi
 
+let mapleader=","
+
 compiler ruby " Enable compiler support for ruby
 
 :set wrap " wrap lines
@@ -114,11 +116,6 @@ nmap <silent> ,/ :nohlsearch<CR> " clear search buffer
 "<leader>gc maps to :Gcommit<CR>
 "<leader>gp maps to :Git push<CR>
 
-map <leader>a :Ack<space>
-map <leader>t :CtrlPMixed<ENTER>
-
-"<leader>b view buffer
-
 " save
 map <leader>s :w!<CR>
 map <leader>w :w!<CR>
@@ -150,9 +147,36 @@ map <Leader>j <C-W>j
 map <Leader>k <C-W>k
 map <Leader>l <C-W>l
 
-" shortcuts to restart / open rails app in browser
-"map <leader>po :!powder open<CR><enter>
-"map <leader>pk :!powder restart<CR><enter>
+" ---------------------------------------------------------
+" ACK Settings
+" ---------------------------------------------------------
+map <leader>a :Ack<space>
+
+" ---------------------------------------------------------
+" BufferGator Settings
+" ---------------------------------------------------------
+map <leader>b :BuffergatorToggle<cr> " toggle view
+let g:buffergator_suppress_keymaps = 1 " suppress BufferGator default mapping
+
+" ---------------------------------------------------------
+" CTRL-P Settings
+" ---------------------------------------------------------
+map <leader>t :CtrlPMixed<ENTER>
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_show_hidden = 1 " make dotfiles searchable
+
+" Exclude content from searching
+set wildignore+=*/vendor/bundle/*
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc$',
+  \ 'file': '\.exe$\|\.so$\|\.dat$\|\.gitkeep$\|\Gemfile.lock$\|\.DS_Store',
+  \ }
+
+" https://github.com/kien/ctrlp.vim/issues/160 selections open in new tab
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': ['<c-t>'],
+  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+  \ }
 
 " ---------------------------------------------------------
 " CUSTOM AUTOCMDS
@@ -238,21 +262,6 @@ endfunction
 map <leader>r :call RenameFile()<cr>
 
 " ---------------------------------------------------------
-" Exclude content from searching
-" ---------------------------------------------------------
-set wildignore+=*/vendor/bundle/*
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc$',
-  \ 'file': '\.exe$\|\.so$\|\.dat$\|\.gitkeep$\|\Gemfile.lock',
-  \ }
-
-" https://github.com/kien/ctrlp.vim/issues/160 selections open in new tab
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': ['<c-t>'],
-  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-  \ }
-
-" ---------------------------------------------------------
 " stop indenting when pasting to vim in osx
 " ---------------------------------------------------------
 if &term =~ "xterm.*"
@@ -274,19 +283,11 @@ endif
 " ---------------------------------------------------------
 :set t_Co=256
 :set background=dark 
-
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
-
-" install the patched menlo font https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-" then flush the powerline cache, :PowerlineClearCache
 let g:Powerline_symbols='fancy'
 
 if has("gui_running")
   set lines=90 columns=200
   set mouse=a "get full mouse support
-
   :color solarized
   :set guifont=Menlo:h13
 else
