@@ -298,9 +298,9 @@ function! Preserve(command)
   let @/=_s
   call cursor(l, c)
 endfunction
-
-nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
-nmap _= :call Preserve("normal gg=G")<CR>
+" disabled for now
+" nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+" nmap _= :call Preserve("normal gg=G")<CR>
 
 " ---------------------------------------------------------
 " COLOR
