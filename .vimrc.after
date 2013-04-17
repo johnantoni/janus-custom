@@ -1,6 +1,3 @@
-" ---------------------------------------------------------
-" BASIC SETTINGS
-" ---------------------------------------------------------
 :set nocompatible " make incompatible to vi
 
 let mapleader=","
@@ -73,119 +70,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" ---------------------------------------------------------
-" KEY MAPS
-" ---------------------------------------------------------
-" Substitute :Q for :q to save retypes
-command! Q q
-" Substitute ; for : to save keystrokes
-nnoremap ; :
-" Use leader+leader as :
-nnoremap <Leader><Leader> :
+:set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
-" ctrl+s save (insert & normal mode)
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-
-" type jj quickly to exit insert mode
-imap jj <Esc>
-" ctrl+l goto end of line insert mode
-imap <C-l> <esc>$a
-
-" jumps to the next line of long lines of text, useful for moving around
-map j gj
-map k gk
-
-" if a file needs sudo access to write, make it so
-cnoreabbrev <expr> w!!
-                \((getcmdtype() == ':' && getcmdline() == 'w!!')
-                \?('!sudo tee % >/dev/null'):('w!!'))
-
-nmap <silent> ,/ :nohlsearch<CR> " clear search buffer
-
-" --------------------------------------------------------
-" LEADER KEYS
-" ---------------------------------------------------------
-" stop using ctrl+something, bad habit
-
-" notes
-"<leader>gb maps to :Gblame<CR>
-"<leader>gs maps to :Gstatus<CR>
-"<leader>gd maps to :Gdiff<CR>
-"<leader>gl maps to :Glog<CR>
-"<leader>gc maps to :Gcommit<CR>
-"<leader>gp maps to :Git push<CR>
-
-" save
-map <leader>s :w!<CR>
-map <leader>w :w!<CR>
-" save and close
-map <leader>W :wq!<CR>
-" close current window
-map <leader>q :q!<CR>
-" close all windows
-map <leader>Q :qa!<CR>
-
-" open files in directory of current file
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
-map <leader>v :view %%
-
-" ctrl+p rails shortcuts
-map <leader>ec :CtrlP app/controllers<cr>
-map <leader>ea :CtrlP app<cr>
-map <leader>em :CtrlP app/models<cr>
-map <leader>ev :CtrlP app/views<cr>
-
-" navigate windows
-" move to the window left
-" move to the window below
-" move to the window above
-" move to the window right
-map <Leader>h <C-W>h
-map <Leader>j <C-W>j
-map <Leader>k <C-W>k
-map <Leader>l <C-W>l
-
-" ---------------------------------------------------------
-" NERDTree Settings
-" ---------------------------------------------------------
-nmap <leader>n :NERDTreeToggle<CR>
-
-" ---------------------------------------------------------
-" ACK Settings
-" ---------------------------------------------------------
-map <leader>a :Ack<space>
-
-" ---------------------------------------------------------
-" BufferGator Settings
-" ---------------------------------------------------------
-map <leader>b :BuffergatorToggle<cr> " toggle view
-let g:buffergator_suppress_keymaps = 1 " suppress BufferGator default mapping
-
-" ---------------------------------------------------------
-" CTRL-P Settings
-" ---------------------------------------------------------
-map <leader>t :CtrlPMixed<ENTER>
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_show_hidden = 1 " make dotfiles searchable
-
-" Exclude content from searching
-set wildignore+=*/vendor/bundle/*
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc$',
-  \ 'file': '\.exe$\|\.so$\|\.dat$\|\.gitkeep$\|\Gemfile.lock$\|\.DS_Store',
-  \ }
-
-" https://github.com/kien/ctrlp.vim/issues/160 selections open in new tab
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': ['<c-t>'],
-  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-  \ }
-
-" ---------------------------------------------------------
-" CUSTOM AUTOCMDS
-" ---------------------------------------------------------
 augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
@@ -232,79 +118,9 @@ augroup vimrcEx
   autocmd filetype svn,*commit* setlocal spell "spell check when writing commit logs
 augroup END
 
-" ---------------------------------------------------------
-" STATUS LINE
-" ---------------------------------------------------------
-:set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+source ~/.janus/vim/keymaps.vim
+source ~/.janus/vim/functions.vim
 
-" ---------------------------------------------------------
-" MULTIPURPOSE TAB KEY
-" ---------------------------------------------------------
-" Indent if we're at the beginning of a line. Else, do completion.
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
-" ---------------------------------------------------------
-" RENAME CURRENT FILE
-" ---------------------------------------------------------
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
-map <leader>r :call RenameFile()<cr>
-
-" ---------------------------------------------------------
-" stop indenting when pasting to vim in osx
-" ---------------------------------------------------------
-if &term =~ "xterm.*"
-    let &t_ti = &t_ti . "\e[?2004h"
-    let &t_te = "\e[?2004l" . &t_te
-    function XTermPasteBegin(ret)
-        set pastetoggle=<Esc>[201~
-        set paste
-        return a:ret
-    endfunction
-    map <expr> <Esc>[200~ XTermPasteBegin("i")
-    imap <expr> <Esc>[200~ XTermPasteBegin("")
-    cmap <Esc>[200~ <nop>
-    cmap <Esc>[201~ <nop>
-endif
-
-" ---------------------------------------------------------
-" strip trailing whitespace
-" http://vimcasts.org/episodes/tidying-whitespace
-" ---------------------------------------------------------
-function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-" disabled for now
-" nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
-" nmap _= :call Preserve("normal gg=G")<CR>
-
-" ---------------------------------------------------------
-" COLOR
-" ---------------------------------------------------------
 :set t_Co=256
 :set background=dark
 let g:Powerline_symbols='fancy'
