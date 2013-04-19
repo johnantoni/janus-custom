@@ -70,7 +70,13 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Highlight the status line
+highlight StatusLine ctermfg=blue ctermbg=yellow
+
 :set statusline=%<%f\ (%{&ft})\ %{fugitive#statusline()}\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+
+" Set gutter background to black
+highlight SignColumn ctermbg=black
 
 augroup vimrcEx
   " Clear all autocmds in the group

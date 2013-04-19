@@ -15,6 +15,9 @@ let g:buffergator_suppress_keymaps = 1 " suppress BufferGator default mapping
 map <leader>t :CtrlPMixed<ENTER>
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_show_hidden = 1 " make dotfiles searchable
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_max_height = 50
+let g:ctrlp_switch_buffer = 'Et'
 set wildignore+=*/vendor/bundle/*
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
 set wildignore+=*.png,*.PNG,*.JPG,*.jpg,*.GIF,*.gif,vendor/**,coverage/**,tmp/**,rdoc/**
@@ -47,9 +50,9 @@ imap jj <Esc>
 " ctrl+l goto end of line insert mode
 imap <C-l> <esc>$a
 
-" jumps to the next line
-map j gj
-map k gk
+" move up/down long lines
+nmap k gk
+nmap j gj
 
 " if a file needs sudo access to write, make it so
 cnoreabbrev <expr> w!!
