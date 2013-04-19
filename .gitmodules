@@ -16,9 +16,6 @@
 [submodule "vim-less"]
 	path = vim-less
 	url = git://github.com/groenewege/vim-less.git
-[submodule "nginx-vim-syntax"]
-	path = nginx-vim-syntax
-	url = git@github.com:johnantoni/nginx-vim-syntax.git
 [submodule "vim-slim"]
 	path = vim-slim
 	url = git@github.com:johnantoni/vim-slim.git
