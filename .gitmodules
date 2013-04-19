@@ -30,4 +30,4 @@
 	url = git@github.com:johnantoni/vim-powerline.git
 [submodule "nginx-vim-syntax"]
 	path = nginx-vim-syntax
-	url = git@github.com:johnantoni/nginx-vim-syntax.git
+	url = git://github.com/johnantoni/nginx-vim-syntax.git
